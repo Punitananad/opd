@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Here is Your PATIENT'S QUEUE:</h1>
+<p>Maximum S.No: {{ total_patients }}</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Father's Name</th>
+        <th scope="col">Action</th>
+        <th scope="col">Action</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for patients in all_patients %} 
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{patients.name}}</td>
+            <!-- <td>{{loop.index.max}}</td> -->
+            <td>{{patients.fathers_name}}</td>
+            <td>
+                <form action="{{ url_for('mark_done', id=patients.id) }}" method="post">
+                    <button type="submit" class="btn btn-sm btn-success">DONE</button>
+                </form>
+            </td>
+            <td>
+                <form action="{{ url_for('reschedule_patient', id=patients.id) }}" method="post">
+                    <button type="submit" class="btn btn-sm btn-warning">Re-Schedule</button>
+                </form>
+            </td>
+            <td><a href="{{url_for('delete_patient',id=patients.id)}}" class="btn btn-sm btn-danger">DELETE</a></td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+  </table>
+{% endblock %}

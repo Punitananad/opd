@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <div class="alert alert-primary" role="alert">
+        {{message}}
+      </div>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endwith %}
+
+<form method = 'POST' action = "{{url_for('addpatient')}}">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name"><br>
+
+    <label for="gender">Gender: </label>
+    <select name="gender" id="gender"><option value="male">Male</option><option value="female">Female</option></select><br>
+
+    <label for="state">State: </label>
+    <select name="state" id="state">
+        <option value="AP">Andhra Pradesh</option>
+        <option value="AR">Arunachal Pradesh</option>
+        <option value="AS">Assam</option>
+        <option value="BR">Bihar</option>
+        <option value="CT">Chhattisgarh</option>
+        <option value="GA">Gujarat</option>
+        <option value="HR">Haryana</option>
+        <option value="HP">Himachal Pradesh</option>
+        <option value="JK">Jammu and Kashmir</option>
+        <option value="GA">Goa</option>
+        <option value="JH">Jharkhand</option>
+        <option value="KA">Karnataka</option>
+        <option value="KL">Kerala</option>
+        <option value="MP">Madhya Pradesh</option>
+        <option value="MH">Maharashtra</option>
+        <option value="MN">Manipur</option>
+        <option value="ML">Meghalaya</option>
+        <option value="MZ">Mizoram</option>
+        <option value="NL">Nagaland</option>
+        <option value="OR">Odisha</option>
+        <option value="PB">Punjab</option>
+        <option value="RJ">Rajasthan</option>
+        <option value="SK">Sikkim</option>
+        <option value="TN">Tamil Nadu</option>
+        <option value="TG">Telangana</option>
+        <option value="TR">Tripura</option>
+        <option value="UT">Uttarakhand</option>
+        <option value="UP">Uttar Pradesh</option>
+        <option value="WB">West Bengal</option>
+        <option value="AN">Andaman and Nicobar Islands</option>
+        <option value="CH">Chandigarh</option>
+        <option value="DN">Dadra and Nagar Haveli</option>
+        <option value="DD">Daman and Diu</option>
+        <option value="DL">Delhi</option>
+        <option value="LD">Lakshadweep</option>
+        <option value="PY">Puducherry</option>
+    </select><br>
+
+    <label for="phn_no">Phn No: </label>
+    <input type="number" name="phn_no" id="phn_no"><br>
+
+    <label for="weight">Weight: </label>
+    <input type="number" name="weight" id="weight"><br>
+
+    <label for="age">Age: </label>
+    <input type="number" name="age" id="age"><br>
+
+    <label for="blood">Blood Group: </label>
+    <select name="blood" id="blood"><option value="o+">O+</option><option value="o-">O-</option><option value="b+">B+</option></select><br>
+
+    <label for="f_name">Father's Name: </label>
+    <input type="text" name="f_name" id="f_name">
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <a href="{{url_for('queue')}}">visit Queue</a>
+
+
+</form>
+
+{% endblock %}
